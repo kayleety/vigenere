@@ -23,12 +23,12 @@ def vigenere(text, key, code):
         textIndex = int(ord(text[i]))
         keyIndex = int(ord(key[index])) - 65
 
-        if code == True:
+        if code == "encode":
             newIndex = textIndex + keyIndex
             if newIndex > 90: #circle back to the beginning of the alphabet
                 newIndex -= 26
 
-        else:
+        if code == "decode":
             newIndex = textIndex - keyIndex
             if newIndex < 65: #circle to the end of the alphabet
                 newIndex = 26 + (textIndex - keyIndex)
@@ -36,33 +36,10 @@ def vigenere(text, key, code):
         index += 1
         final += chr(newIndex)
 
-        '''
-        if code == True: #encode, add letters
-            if index == keyLength:
-                index = 0
-            textIndex = int(ord(text[i]))
-            keyIndex = int(ord(key[index])) - 65
-            newIndex = textIndex + keyIndex
-
-            if newIndex > 90: #circle back to the beginning of the alphabet
-                newIndex -= 26
-
-            index += 1
-            final += chr(newIndex)
-
-        if code == False: #decode, subtract letters
-            if index == keyLength:
-                index = 0
-            textIndex = int(ord(text[i]))
-            keyIndex = int(ord(key[index])) - 65
-            newIndex = textIndex - keyIndex
-
-            if newIndex < 65: #circle to the end of the alphabet
-                newIndex = 26 + (textIndex - keyIndex)
-
-            index += 1
-            final += chr(newIndex)
-        '''
     print(final)
 
-vigenere('hotdogstand', 'BOAR', True) #test code
+if __name__ == "__main__":
+    code = sys.argv[1]
+    text = sys.argv[2]
+    key = sys.argv[3]
+    vigenere(text, key, code)
