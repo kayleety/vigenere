@@ -35,7 +35,7 @@ def vigenere(text, key, code):
                 index = 0
             textIndex = int(ord(text[i]))
             keyIndex = int(ord(key[index])) - 65
-            newIndex = textIndex + keyIndex
+            newIndex = textIndex - keyIndex
 
             if newIndex < 65: #circle to the end of the alphabet
                 newIndex = 26 + (textIndex - keyIndex)
