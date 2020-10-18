@@ -8,6 +8,10 @@ import sys
 
 #True = encode, False = decode
 def vigenere(text, key, code):
+    for i in text: #ensure only capitalized letters are included
+        if ord(i) < 65 or ord(i) > 90:
+            text = text.replace(i, "")
+
     keyLength = len(key)
     index = 0 #index relating to the key
     final = ""
@@ -34,7 +38,9 @@ def vigenere(text, key, code):
             newIndex = textIndex + keyIndex
 
             if newIndex < 65: #circle to the end of the alphabet
-                newIndex -= 26
+                newIndex = 26 + (textIndex - keyIndex)
 
             index += 1
             final += chr(newIndex)
+
+    print(final)
