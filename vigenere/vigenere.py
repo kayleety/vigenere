@@ -7,7 +7,8 @@ October 18, 2020
 import sys
 
 def vigenere(text, key, code):
-    text = text.upper() #make all characters uppercase
+    text = text.upper()
+    key = key.upper()
     for i in text: #ensure only capitalized letters are included
         if ord(i) < 65 or ord(i) > 90:
             text = text.replace(i, "")
