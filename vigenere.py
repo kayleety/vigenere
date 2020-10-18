@@ -17,10 +17,10 @@ def vigenere(text, key, code):
             if index == keyLength:
                 index = 0
             textIndex = int(ord(text[i]))
-            keyIndex = int(ord(key[index])) - 97
+            keyIndex = int(ord(key[index])) - 65
             newIndex = textIndex + keyIndex
 
-            if newIndex > 122: #circle back to the beginning of the alphabet
+            if newIndex > 90: #circle back to the beginning of the alphabet
                 newIndex -= 26
 
             index += 1
@@ -30,10 +30,10 @@ def vigenere(text, key, code):
             if index == keyLength:
                 index = 0
             textIndex = int(ord(text[i]))
-            keyIndex = int(ord(key[index])) - 97
+            keyIndex = int(ord(key[index])) - 65
             newIndex = textIndex + keyIndex
 
-            if newIndex < 97: #circle to the end of the alphabet
+            if newIndex < 65: #circle to the end of the alphabet
                 newIndex -= 26
 
             index += 1
