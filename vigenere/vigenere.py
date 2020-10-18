@@ -16,24 +16,24 @@ def vigenere(text, key, code):
     index = 0 #index relating to the key
     final = ""
 
-    for i in range(len(text)):
+    for i in range(len(text)): #go through every letter in text
         if index == keyLength:
             index = 0
         textIndex = int(ord(text[i]))
-        keyIndex = int(ord(key[index])) - 65
+        keyIndex = int(ord(key[index])) - 65 #letter correlates w/ # place in alphabet
 
         if code == "encode":
-            newIndex = textIndex + keyIndex
-            if newIndex > 90: #circle back to the beginning of the alphabet
-                newIndex -= 26
+            newIndex = textIndex + keyIndex #encode => add
+            if newIndex > 90:
+                newIndex -= 26 #circle back to the beginning of the alphabet
 
-        if code == "decode":
-            newIndex = textIndex - keyIndex
-            if newIndex < 65: #circle to the end of the alphabet
-                newIndex = 26 + (textIndex - keyIndex)
+        else:
+            newIndex = textIndex - keyIndex #decode => subtract
+            if newIndex < 65:
+                newIndex = 26 + (textIndex - keyIndex) #circle to the end of the alphabet
 
         index += 1
-        final += chr(newIndex)
+        final += chr(newIndex) #add to final text to be printed
 
     print(final)
 
